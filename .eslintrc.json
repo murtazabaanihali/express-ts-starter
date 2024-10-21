@@ -1,0 +1,43 @@
+{
+    "env": {
+        "node": true, // Enable Node.js global variables and scope
+        "es2020": true // Enable modern ECMAScript features
+    },
+    "extends": [
+        "eslint:recommended", // Use recommended ESLint rules
+        "plugin:@typescript-eslint/recommended" // Use TypeScript-specific rules
+    ],
+    "parser": "@typescript-eslint/parser", // Use TypeScript parser
+    "parserOptions": {
+        "ecmaVersion": 2020, // Allow modern ECMAScript features
+        "sourceType": "module", // Enable usage of ES modules (import/export)
+        "project": "./tsconfig.json" // Link to your tsconfig.json for type information
+    },
+    "plugins": [
+        "@typescript-eslint" // Use the TypeScript plugin for ESLint
+    ],
+    "rules": {
+        // TypeScript-specific rules
+        "@typescript-eslint/explicit-function-return-type": "off", // Don't force return types
+        // ESLint standard rules
+        "eqeqeq": [
+            "error",
+            "always"
+        ], // Enforce strict equality checking
+        "consistent-return": "error" // Ensure functions have consistent return values
+    },
+    "ignorePatterns": [
+        "node_modules/",
+        "dist/"
+    ], // Ignore these directories during linting
+    "overrides": [
+        {
+            "files": [
+                "*.ts"
+            ], // Apply these settings to TypeScript files only
+            "rules": {
+                "@typescript-eslint/explicit-module-boundary-types": "off" // Don't force function return types in modules
+            }
+        }
+    ]
+}
